@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+           version="3.1">
+<!--
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>test.HelloWorld</servlet-class>
+    </servlet> -->
+
+    <servlet>
+        <servlet-name>TestingServlet</servlet-name>
+        <servlet-class>segsoft.servlet.TestingServlet</servlet-class>
+	</servlet>
+	<servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>segsoft.servlet.HomeServlet</servlet-class>
+	</servlet>
+	<servlet>
+        <servlet-name>ManageUsersServlet</servlet-name>
+        <servlet-class>segsoft.servlet.ManageUsersServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+        <servlet-class>segsoft.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateAccountServlet</servlet-name>
+        <servlet-class>segsoft.servlet.CreateAccountServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>segsoft.servlet.ChangePasswordServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteAccountServlet</servlet-name>
+        <servlet-class>segsoft.servlet.DeleteAccountServlet</servlet-class>
+	</servlet>
+	<servlet>
+        <servlet-name>LockAccountServlet</servlet-name>
+        <servlet-class>segsoft.servlet.LockAccountServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>segsoft.servlet.LogoutServlet</servlet-class>
+	</servlet>
+    <servlet-mapping>
+        <servlet-name>TestingServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>ManageUsersServlet</servlet-name>
+        <url-pattern>/manageusers</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+		<url-pattern>/</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/change</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>DeleteAccountServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>LockAccountServlet</servlet-name>
+        <url-pattern>/lock</url-pattern>
+    </servlet-mapping>
+	<security-constraint>
+
+
+<web-resource-collection>
+
+
+<web-resource-name>authenticator</web-resource-name>
+
+
+<url-pattern>/*</url-pattern>
+
+
+</web-resource-collection>
+
+
+<user-data-constraint>
+
+
+<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+
+
+</user-data-constraint>
+
+
+</security-constraint>
+	
+</web-app>
+

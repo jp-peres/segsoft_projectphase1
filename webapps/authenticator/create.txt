@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        input[type=password] {
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: orangered;
+        }
+    </style>
+    <title>Create Account</title>
+
+</head>
+
+<body>
+    <h1>Create Account</h1>
+    <form action="/authenticator/create" method=POST>
+        Username:<input type="text" size="35" name="usr">
+        <br>
+        Password:<input type="password" size="35" name="pass1">
+        <br>
+        Repeat password:<input type="password" size="35" name="pass2">
+        <input type="submit" name="createacc">
+    </form>
+</body>
+
+</html>

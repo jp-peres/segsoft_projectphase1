@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        input[type=button] {
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: orangered;
+        }
+    </style>
+    <title>Home</title>
+
+</head>
+
+<body>
+    <h1>Authenticator test</h1>
+    <div id="box" style="text-align: center;">
+        <input type="button" id="test" value="Test App">
+        <br>
+        <input type="button" id="changePass" value="Change Password">
+        <br>
+        <input type="button" id="logout" value="Logout">
+    </div>
+    <script type="text/javascript">
+        document.getElementById("changePass").onclick = function () {
+            location.href = "/authenticator/change";
+        };
+
+        document.getElementById("test").onclick = function () {
+            location.href = "/authenticator/test";
+        };
+
+        document.getElementById("logout").onclick = function () {
+            location.href = "/authenticator/logout";
+        };
+    </script>
+</body>
+
+</html>

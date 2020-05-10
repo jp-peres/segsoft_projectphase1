@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        input[type=text] {
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: orangered;
+        }
+    </style>
+    <title>Delete Account</title>
+
+</head>
+
+<body>
+    <h1>Delete Account</h1>
+    <form action="/authenticator/delete" method=POST>
+        Username of account to delete:<input type="text" size="35" name="usr">
+        <br>
+        <input type="submit" name="deleteacc">
+    </form>
+</body>
+
+</html>

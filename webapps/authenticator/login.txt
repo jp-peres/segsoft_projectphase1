@@ -1,0 +1,22 @@
+<HTML>
+
+<HEAD>
+    <style>
+        input[type=button] {
+            margin-top: 15px;
+        }
+
+        h1 {
+            color: orangered;
+        }
+    </style>
+    <title>Login</title>
+</HEAD>
+<form action="authenticator/login" method=POST>
+	<br>
+	<h1>Login</h1>
+	Username: <input type=text size=35 name=username>
+	Password: <input type=password size=35 name=password>
+	<br>
+	<input type=submit name=login>
+</form>

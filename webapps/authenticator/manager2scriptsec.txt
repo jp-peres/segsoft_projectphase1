@@ -1,0 +1,320 @@
+<html>
+
+<head>
+    <title>Manage Users</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: orangered;
+        }
+
+        thead {
+            color: orangered;
+        }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Table stuff*/
+
+        table,
+        th,
+        td,
+        tbody {
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        body {
+            text-align: center;
+        }
+    </style>
+    <script type="application/javascript">
+        var modalContent, modal;
+        window.onload = function init() {
+            modal = document.getElementById("myModal");
+            modalContent = document.getElementById("mContent");
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+		function back() {
+			location.href = "/authenticator/home";
+		}
+        function changeOp(ev) {
+            let accountToRemove = ev;
+            while (modalContent.firstChild != null) {
+                modalContent.removeChild(modalContent.lastChild);
+            }
+            let closeBtn = document.createElement("span");
+            closeBtn.setAttribute("class", "close");
+            closeBtn.innerHTML = "&times;"
+            closeBtn.setAttribute("onclick", "closeModal()");
+            modalContent.appendChild(closeBtn);
+            let formChange = document.createElement("form");
+            formChange.setAttribute("method", "post");
+            formChange.setAttribute("action", "/authenticator/manageusers");
+            let labelpass1 = document.createElement("label");
+            labelpass1.setAttribute("for", "pass1");
+            labelpass1.innerHTML = "New password:";
+            let pass1Text = document.createElement("INPUT");
+            pass1Text.setAttribute("type", "password");
+            pass1Text.setAttribute("name", "pass1");
+            pass1Text.setAttribute("id", "pass1");
+            let br1 = document.createElement("br");
+            let labelpass2 = document.createElement("label");
+            labelpass2.setAttribute("for", "pass2");
+            labelpass2.innerHTML = "Repeat new password:";
+            let pass2Text = document.createElement("INPUT");
+            pass2Text.setAttribute("type", "password");
+            pass2Text.setAttribute("name", "pass2");
+            pass2Text.setAttribute("id", "pass2");
+            let submitBt = document.createElement("INPUT");
+            submitBt.setAttribute("type", "submit");
+            submitBt.setAttribute("name", "changepass");
+            let op = document.createElement("input");
+            op.setAttribute("type", "hidden");
+            op.setAttribute("name", "op");
+            op.setAttribute("value", "ch");
+            let usrTxt = document.createElement("INPUT");
+            usrTxt.setAttribute("type", "hidden");
+            usrTxt.setAttribute("name", "usr");
+            usrTxt.setAttribute("value", accountToRemove);
+			let br2 = document.createElement("br");
+            formChange.appendChild(usrTxt);
+            formChange.appendChild(op);
+            formChange.appendChild(labelpass1);
+            formChange.appendChild(pass1Text);
+            formChange.appendChild(br1);
+            formChange.appendChild(labelpass2);
+            formChange.appendChild(pass2Text);
+			formChange.appendChild(br2);
+            formChange.appendChild(submitBt);
+            let heading1 = document.createElement("h1");
+            heading1.innerHTML = "Change " + accountToRemove + " account password:";
+            modalContent.appendChild(heading1);
+            modalContent.appendChild(formChange);
+            modal.style.display = "block";
+        }
+
+        function deleteOp(ev) {
+            let accountToRemove = ev;
+            while (modalContent.firstChild != null) {
+                modalContent.removeChild(modalContent.lastChild);
+            }
+            let closeBtn = document.createElement("span");
+            closeBtn.setAttribute("class", "close");
+            closeBtn.innerHTML = "&times;"
+            closeBtn.setAttribute("onclick", "closeModal()");
+            modalContent.appendChild(closeBtn);
+            let heading1 = document.createElement("h1");
+            heading1.innerHTML = "Delete " + ev + " account?";
+            modalContent.appendChild(heading1);
+            let br1 = document.createElement("br");
+            modalContent.appendChild(br1);
+            let formDelete = document.createElement("form");
+            formDelete.setAttribute("method", "post");
+            formDelete.setAttribute("action", "/authenticator/manageusers");
+            let yesBt = document.createElement("INPUT");
+            yesBt.setAttribute("value", "Yes");
+            yesBt.setAttribute("type", "Submit");
+            let usrTxt = document.createElement("INPUT");
+            usrTxt.setAttribute("type", "hidden");
+            usrTxt.setAttribute("name", "usr");
+            usrTxt.setAttribute("value", accountToRemove);
+            let noBt = document.createElement("INPUT");
+            noBt.setAttribute("value", "No");
+            noBt.setAttribute("type", "button");
+            noBt.setAttribute("onclick", "closeModal()");
+            let op = document.createElement("input");
+            op.setAttribute("type", "hidden");
+            op.setAttribute("name", "op");
+            op.setAttribute("value", "dl");
+            formDelete.appendChild(op);
+            formDelete.appendChild(usrTxt);
+            formDelete.appendChild(yesBt);
+            formDelete.appendChild(noBt);
+            modalContent.appendChild(formDelete);
+            modal.style.display = "block";
+        }
+
+        function createOp() {
+            while (modalContent.firstChild != null) {
+                modalContent.removeChild(modalContent.lastChild);
+            }
+            let closeBtn = document.createElement("span");
+            closeBtn.setAttribute("class", "close");
+            closeBtn.innerHTML = "&times;"
+            closeBtn.setAttribute("onclick", "closeModal()");
+            modalContent.appendChild(closeBtn);
+            let heading1 = document.createElement("h1");
+            heading1.innerHTML = "Create new account";
+            modalContent.appendChild(heading1);
+            let br1 = document.createElement("br");
+            modalContent.appendChild(br1);
+            let formCreate = document.createElement("form");
+            formCreate.setAttribute("method", "post");
+            formCreate.setAttribute("action", "/authenticator/manageusers");
+            let labelUsername = document.createElement("label");
+            labelUsername.setAttribute("for", "usr");
+            labelUsername.innerHTML = "Username: ";
+            formCreate.appendChild(labelUsername);
+            let usrTxt = document.createElement("INPUT");
+            usrTxt.setAttribute("type", "text");
+            usrTxt.setAttribute("name", "usr");
+            usrTxt.setAttribute("id", "usr");
+            formCreate.appendChild(usrTxt);
+            let br2 = document.createElement("br");
+            formCreate.appendChild(br2);
+            let labelpass1 = document.createElement("label");
+            labelpass1.setAttribute("for", "pass1");
+            labelpass1.innerHTML = "Password: ";
+            formCreate.appendChild(labelpass1);
+            let pass1Text = document.createElement("INPUT");
+            pass1Text.setAttribute("type", "password");
+            pass1Text.setAttribute("name", "pass1");
+            pass1Text.setAttribute("id", "pass1");
+            formCreate.appendChild(pass1Text);
+            let br3 = document.createElement("br");
+            formCreate.appendChild(br3);
+            let labelpass2 = document.createElement("label");
+            labelpass2.setAttribute("for", "pass2");
+            labelpass2.innerHTML = "Repeat password: ";
+            formCreate.appendChild(labelpass2);
+            let pass2Text = document.createElement("INPUT");
+            pass2Text.setAttribute("type", "password");
+            pass2Text.setAttribute("name", "pass2");
+            pass2Text.setAttribute("id", "pass2");
+            formCreate.appendChild(pass2Text);
+            let br4 = document.createElement("br");
+            formCreate.appendChild(br4);
+            let submitBt = document.createElement("INPUT");
+            submitBt.setAttribute("type", "submit");
+            let op = document.createElement("input");
+            op.setAttribute("type", "hidden");
+            op.setAttribute("name", "op");
+            op.setAttribute("value", "cr");
+            formCreate.appendChild(op);
+            formCreate.appendChild(submitBt);
+            modalContent.appendChild(formCreate);
+            modal.style.display = "block";
+        }
+
+        function lockOp(acc, ev) {
+            let accountToLock = acc;
+            let btnTxt = ev.value;
+            while (modalContent.firstChild != null) {
+                modalContent.removeChild(modalContent.lastChild);
+            }
+            let closeBtn = document.createElement("span");
+            closeBtn.setAttribute("class", "close");
+            closeBtn.innerHTML = "&times;"
+            closeBtn.setAttribute("onclick", "closeModal()");
+            modalContent.appendChild(closeBtn);
+            let heading1 = document.createElement("h1");
+            heading1.innerHTML = btnTxt + " " + accountToLock + "?";
+            modalContent.appendChild(heading1);
+            let br1 = document.createElement("br");
+            modalContent.appendChild(br1);
+            let formLock = document.createElement("form");
+            formLock.setAttribute("method", "post");
+            formLock.setAttribute("action", "/authenticator/manageusers");
+            let yesBt = document.createElement("INPUT");
+            yesBt.setAttribute("type", "Submit");
+            yesBt.setAttribute("value", "Yes");
+            let usrTxt = document.createElement("INPUT");
+            usrTxt.setAttribute("type", "hidden");
+            usrTxt.setAttribute("name", "usr");
+            usrTxt.setAttribute("value", accountToLock);
+            let lockVal = document.createElement("INPUT");
+            lockVal.setAttribute("type", "hidden");
+            lockVal.setAttribute("name", "lockV");
+            if (btnTxt == "Unlock Account")
+                lockVal.setAttribute("value", "false");
+            else
+                lockVal.setAttribute("value", "true");
+            let noBt = document.createElement("INPUT");
+            noBt.setAttribute("value", "No");
+            noBt.setAttribute("type", "button");
+            noBt.setAttribute("onclick", "closeModal()");
+            let op = document.createElement("input");
+            op.setAttribute("type", "hidden");
+            op.setAttribute("name", "op");
+            op.setAttribute("value", "lc");
+            formLock.appendChild(op);
+            formLock.appendChild(usrTxt);
+            formLock.appendChild(lockVal);
+            formLock.appendChild(yesBt);
+            formLock.appendChild(noBt);
+            modalContent.appendChild(formLock);
+            modal.style.display = "block";
+        }
+        function closeModal(ev) {
+            modal.style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Manage Users</h1>
+    <table>
+        <thead>
+            <td>Account</td>
+            <td>Operations</td>
+            <td>Status</td>
+        </thead>
+        <tbody>
