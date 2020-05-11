@@ -1,6 +1,22 @@
 # Authenticator Framework Project
 
+### Index:
+  * [Basic Info](#basic-info)
+  * [How to install?](#how-to-install)
+  * [Login credentials](#login-credentials)
+  * [Troubleshooting](#troubleshooting)
 
+## Basic info
+
+  This repository sole purpose is for installation of the application.
+  
+  The source code was developed mainly in this [repository](https://github.com/jp-peres/segsoftP1).
+
+  This was done by
+  |||
+  |:-:|:-:|
+  |João Peres|48320|
+  |Tiago Bica|47207|
 
 ## How to install?
 
@@ -12,7 +28,7 @@
 
     - `db = connect("localhost:MYMONGODBPORT/demo");`
 
-  **3.** Open command prompt and type mongo to open mongo. **(In case environment variable isnt set check troubleshooting section bellow).**
+  **3.** Open command prompt and type mongo to open mongo. **(In case environment variable isnt set check [troubleshooting](#troubleshooting) section bellow).**
 
   **4.** After opening mongo type the following command to load the script to make the initial DB with the root account:
   
