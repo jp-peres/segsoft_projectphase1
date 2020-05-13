@@ -14,13 +14,13 @@
 
   This was done by
 
-  * João Peres 48320 
-      
-      <img src="https://avatars1.githubusercontent.com/u/42010113" width="50px" height="50px">
   * Tiago Bica 47207
       
       <img src="https://avatars1.githubusercontent.com/u/42300153" width="50px" height="50px">
-  
+
+  * João Peres 48320 
+      
+      <img src="https://avatars1.githubusercontent.com/u/42010113" width="50px" height="50px">
 
 
 ## How to install?
