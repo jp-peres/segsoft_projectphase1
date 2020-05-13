@@ -46,7 +46,7 @@
   - The root account credentials are the following:
 
     - Username: root
-    - Password: lcaires1
+    - Password: lcaires
 
 ## Troubleshooting
 
